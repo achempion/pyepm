@@ -35,6 +35,9 @@ def abi_data(sig, data):
 
     data_abi += abi.encode_abi(types, data).encode('hex')
     logger.debug("ABI encoded: %s" % data_abi)
+    
+    if len(data_abi) % 2 > 0:
+        data_abi = data_abi.replace('0x','0x0')
 
     return data_abi
 
